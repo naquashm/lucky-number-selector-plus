@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 import NumberPickerForm, { Entry } from '@/components/NumberPickerForm';
 import RandomPicker from '@/components/RandomPicker';
 

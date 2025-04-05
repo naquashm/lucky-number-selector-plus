@@ -61,13 +61,15 @@ const ConfettiEffect: React.FC<ConfettiEffectProps> = ({ active }) => {
         />
       ))}
 
-      <style jsx>{`
-        @keyframes fall {
-          to {
-            transform: translateY(100vh) rotate(${Math.random() * 1000}deg);
+      <style>
+        {`
+          @keyframes fall {
+            to {
+              transform: translateY(100vh) rotate(${Math.random() * 1000}deg);
+            }
           }
-        }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
