@@ -5,6 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { toast } from 'sonner';
 import NumberPickerForm, { Entry } from '@/components/NumberPickerForm';
 import RandomPicker from '@/components/RandomPicker';
+import Navigation from '@/components/Navigation';
 
 const Index = () => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
@@ -26,6 +27,7 @@ const Index = () => {
     <div className="min-h-screen py-8 md:py-12 container">
       <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">
         <div className="p-6 md:p-8">
+          <Navigation />
           <header className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-picker-purple to-picker-orange bg-clip-text text-transparent">
               Random Number Picker
