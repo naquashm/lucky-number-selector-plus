@@ -51,7 +51,10 @@ const WheelCanvas: React.FC<WheelCanvasProps> = ({ entries, spinning, onSpinComp
       ctx.rotate(angle + arcSize / 2 + rotation);
       ctx.textAlign = 'right';
       ctx.fillStyle = '#fff';
-      ctx.font = 'bold 16px sans-serif';
+      
+      // Use larger font when no name is provided
+      const hasName = entries[i].name && entries[i].name.trim() !== '';
+      ctx.font = hasName ? 'bold 16px sans-serif' : 'bold 24px sans-serif';
       
       const displayText = entries[i].name 
         ? `${entries[i].number} - ${entries[i].name}` 
