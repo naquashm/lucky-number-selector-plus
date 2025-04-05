@@ -53,8 +53,8 @@ const WheelCanvas: React.FC<WheelCanvasProps> = ({ entries, spinning, onSpinComp
       ctx.fillStyle = '#fff';
       ctx.font = 'bold 16px sans-serif';
       
-      const displayText = entries[i].label 
-        ? `${entries[i].number} - ${entries[i].label}` 
+      const displayText = entries[i].name 
+        ? `${entries[i].number} - ${entries[i].name}` 
         : `${entries[i].number}`;
         
       const textMaxWidth = radius * 0.8;

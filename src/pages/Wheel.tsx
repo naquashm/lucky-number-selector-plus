@@ -39,7 +39,7 @@ const Wheel = () => {
     setSpinning(false);
     setWinner(winnerEntry);
     setShowConfetti(true);
-    toast.success(`Winner: ${winnerEntry.number}${winnerEntry.label ? ` - ${winnerEntry.label}` : ''}!`);
+    toast.success(`Winner: ${winnerEntry.number}${winnerEntry.name ? ` - ${winnerEntry.name}` : ''}!`);
     
     // Hide confetti after animation
     setTimeout(() => {
@@ -81,7 +81,7 @@ const Wheel = () => {
                   <div className="animate-bounce-in p-4 bg-gradient-to-r from-picker-purple to-picker-orange text-white rounded-lg shadow-lg">
                     <h2 className="text-xl font-bold">Winner!</h2>
                     <p className="text-2xl font-bold">{winner.number}</p>
-                    {winner.label && <p className="text-lg">{winner.label}</p>}
+                    {winner.name && <p className="text-lg">{winner.name}</p>}
                   </div>
                 )}
                 
