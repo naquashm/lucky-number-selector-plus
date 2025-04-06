@@ -109,7 +109,7 @@ const Wheel = () => {
       </Card>
 
       <footer className="text-center mt-8 text-sm text-gray-500">
-        <p>© 2025 Random Picker | Input between 2-100 entries</p>
+        <p>© 2025 Random Selection Tools | Input between 2-100 entries</p>
       </footer>
     </div>
   );

@@ -30,7 +30,7 @@ const Index = () => {
           <Navigation />
           <header className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-picker-purple to-picker-orange bg-clip-text text-transparent">
-              Random Number Picker
+              Random Number Generator
             </h1>
             <p className="text-gray-600 mt-2">
               Enter your numbers with optional names/labels and let the app pick a random one!
@@ -48,7 +48,7 @@ const Index = () => {
       </Card>
 
       <footer className="text-center mt-8 text-sm text-gray-500">
-        <p>© 2025 Random Number Picker | Input between 2-100 entries</p>
+        <p>© 2025 Random Selection Tools | Input between 2-100 entries</p>
       </footer>
     </div>
   );
