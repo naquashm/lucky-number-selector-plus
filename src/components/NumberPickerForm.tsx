@@ -20,10 +20,15 @@ const NumberPickerForm: React.FC<NumberPickerFormProps> = ({ onStartPicking }) =
   const [entryCount, setEntryCount] = useState<number>(5);
   const [entries, setEntries] = useState<Entry[]>([]);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [customCount, setCustomCount] = useState<boolean>(false);
+  const [customEntryCount, setCustomEntryCount] = useState<string>('');
 
   // Initialize entries when entryCount changes
   useEffect(() => {
-    const newEntries = Array(entryCount).fill(0).map((_, i) => {
+    const count = customCount && !isNaN(Number(customEntryCount)) ? 
+                  Number(customEntryCount) : entryCount;
+    
+    const newEntries = Array(count).fill(0).map((_, i) => {
       // Keep old entries if they exist
       if (entries[i]) {
         return entries[i];
@@ -31,10 +36,15 @@ const NumberPickerForm: React.FC<NumberPickerFormProps> = ({ onStartPicking }) =
       return { number: null, name: '' };
     });
     setEntries(newEntries);
-  }, [entryCount]);
+  }, [entryCount, customCount, customEntryCount]);
 
   // Validate the form when entries change
   useEffect(() => {
+    if (entries.length === 0) {
+      setIsFormValid(false);
+      return;
+    }
+    
     const allNumbersValid = entries.every(entry => entry.number !== null);
     const uniqueNumbers = new Set(entries.map(entry => entry.number)).size;
     setIsFormValid(allNumbersValid && uniqueNumbers === entries.length);
@@ -48,6 +58,12 @@ const NumberPickerForm: React.FC<NumberPickerFormProps> = ({ onStartPicking }) =
 
   const handleSliderChange = (value: number[]) => {
     setEntryCount(value[0]);
+    setCustomCount(false);
+  };
+
+  const handleCustomCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomEntryCount(e.target.value);
+    setCustomCount(true);
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -61,20 +77,46 @@ const NumberPickerForm: React.FC<NumberPickerFormProps> = ({ onStartPicking }) =
     <form onSubmit={handleFormSubmit} className="space-y-6 animate-fade-in">
       <Card className="p-6 border-2 border-picker-purple">
         <div className="space-y-4">
-          <div>
-            <Label htmlFor="entryCount">Number of Entries: {entryCount}</Label>
-            <div className="flex items-center gap-4 mt-2">
-              <span className="text-xs">2</span>
-              <Slider
-                id="entryCount"
-                value={[entryCount]}
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="entryCount">Number of Entries: {customCount ? customEntryCount || '0' : entryCount}</Label>
+              <div className="flex items-center gap-4 mt-2">
+                <span className="text-xs">2</span>
+                <Slider
+                  id="entryCount"
+                  value={[entryCount]}
+                  min={2}
+                  max={100}
+                  step={1}
+                  onValueChange={handleSliderChange}
+                  className={`flex-1 ${customCount ? 'opacity-50' : ''}`}
+                  disabled={customCount}
+                />
+                <span className="text-xs">100</span>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-2">
+              <Input 
+                type="number" 
+                placeholder="Custom count (>100)" 
+                value={customEntryCount}
+                onChange={handleCustomCountChange}
                 min={2}
-                max={100}
-                step={1}
-                onValueChange={handleSliderChange}
-                className="flex-1"
+                className="max-w-[200px]"
               />
-              <span className="text-xs">100</span>
+              <Button 
+                type="button" 
+                variant="outline" 
+                size="sm"
+                onClick={() => {
+                  setCustomCount(false);
+                  setCustomEntryCount('');
+                }}
+                className="text-xs h-9"
+              >
+                Use Slider
+              </Button>
             </div>
           </div>
           

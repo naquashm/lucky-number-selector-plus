@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Shuffle, CircleDashed } from 'lucide-react';
+import { Shuffle, CircleDashed, FileSpreadsheet } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -34,6 +34,10 @@ const Home = () => {
                 <p className="text-gray-600">
                   Enter your numbers with optional names/labels and let the app pick a random one.
                 </p>
+                <div className="flex items-center justify-center text-sm text-gray-500 my-1">
+                  <FileSpreadsheet size={16} className="mr-1" />
+                  <span>CSV import available</span>
+                </div>
                 <Button 
                   onClick={() => navigate('/generator')} 
                   className="w-full bg-gradient-to-r from-picker-purple to-picker-orange hover:opacity-90 text-white"
@@ -52,6 +56,10 @@ const Home = () => {
                 <p className="text-gray-600">
                   Enter your numbers and spin the wheel to select a random winner.
                 </p>
+                <div className="flex items-center justify-center text-sm text-gray-500 my-1">
+                  <FileSpreadsheet size={16} className="mr-1" />
+                  <span>CSV import available</span>
+                </div>
                 <Button 
                   onClick={() => navigate('/wheel')} 
                   className="w-full bg-gradient-to-r from-picker-purple to-picker-orange hover:opacity-90 text-white"
@@ -65,7 +73,7 @@ const Home = () => {
       </Card>
 
       <footer className="text-center mt-8 text-sm text-gray-500">
-        <p>© 2025 Random Selection Tools | Input between 2-100 entries</p>
+        <p>© 2025 Random Selection Tools | Support for large data sets via CSV import</p>
       </footer>
     </div>
   );

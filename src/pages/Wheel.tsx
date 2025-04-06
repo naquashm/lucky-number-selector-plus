@@ -8,6 +8,8 @@ import Navigation from '@/components/Navigation';
 import WheelCanvas from '@/components/WheelPicker/WheelCanvas';
 import { Button } from '@/components/ui/button';
 import ConfettiEffect from '@/components/ConfettiEffect';
+import CSVImport from '@/components/CSVImport';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Wheel = () => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
@@ -65,7 +67,18 @@ const Wheel = () => {
           <Separator className="my-6" />
 
           {!showWheel ? (
-            <NumberPickerForm onStartPicking={handleStartPicking} />
+            <Tabs defaultValue="form" className="w-full">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-6">
+                <TabsTrigger value="form">Manual Entry</TabsTrigger>
+                <TabsTrigger value="csv">CSV Import</TabsTrigger>
+              </TabsList>
+              <TabsContent value="form">
+                <NumberPickerForm onStartPicking={handleStartPicking} />
+              </TabsContent>
+              <TabsContent value="csv">
+                <CSVImport onEntriesLoaded={handleStartPicking} />
+              </TabsContent>
+            </Tabs>
           ) : entries ? (
             <div className="space-y-8">
               <div className="relative w-full aspect-square max-w-xl mx-auto">
@@ -109,7 +122,7 @@ const Wheel = () => {
       </Card>
 
       <footer className="text-center mt-8 text-sm text-gray-500">
-        <p>© 2025 Random Selection Tools | Input between 2-100 entries</p>
+        <p>© 2025 Random Selection Tools | Large data sets supported with CSV import</p>
       </footer>
     </div>
   );

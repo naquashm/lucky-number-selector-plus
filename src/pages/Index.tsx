@@ -6,6 +6,8 @@ import { toast } from 'sonner';
 import NumberPickerForm, { Entry } from '@/components/NumberPickerForm';
 import RandomPicker from '@/components/RandomPicker';
 import Navigation from '@/components/Navigation';
+import CSVImport from '@/components/CSVImport';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Index = () => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
@@ -40,7 +42,18 @@ const Index = () => {
           <Separator className="my-6" />
 
           {!showPicker ? (
-            <NumberPickerForm onStartPicking={handleStartPicking} />
+            <Tabs defaultValue="form" className="w-full">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-6">
+                <TabsTrigger value="form">Manual Entry</TabsTrigger>
+                <TabsTrigger value="csv">CSV Import</TabsTrigger>
+              </TabsList>
+              <TabsContent value="form">
+                <NumberPickerForm onStartPicking={handleStartPicking} />
+              </TabsContent>
+              <TabsContent value="csv">
+                <CSVImport onEntriesLoaded={handleStartPicking} />
+              </TabsContent>
+            </Tabs>
           ) : entries ? (
             <RandomPicker entries={entries} onReset={handleReset} />
           ) : null}
@@ -48,7 +61,7 @@ const Index = () => {
       </Card>
 
       <footer className="text-center mt-8 text-sm text-gray-500">
-        <p>© 2025 Random Selection Tools | Input between 2-100 entries</p>
+        <p>© 2025 Random Selection Tools | Large data sets supported with CSV import</p>
       </footer>
     </div>
   );
