@@ -25,29 +25,50 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
 
       const parsedEntries: Entry[] = [];
       
-      // Parse CSV into rows and columns
-      const rows = lines.map(line => line.split(',').map(item => item.trim()));
+      // Parse CSV into rows and columns and clean up quotes
+      const rows = lines.map(line => 
+        line.split(',').map(item => item.trim().replace(/^"(.*)"$/, '$1'))
+      );
       
-      // Extract numbers from first row
+      // Determine if first row is headers by checking if all items are not numbers
       const firstRow = rows[0];
-      if (!firstRow || firstRow.length === 0) {
-        toast.error('No data found in the first row');
+      let startRow = 0;
+      let nameRow = 1;
+      
+      // Check if first row contains headers (no valid numbers)
+      const allFirstRowNonNumeric = firstRow.every(item => isNaN(Number(item)));
+      
+      if (allFirstRowNonNumeric) {
+        console.log('First row appears to be headers, skipping for numbers');
+        startRow = 1; // Skip header row
+        nameRow = 2;  // Names are in the third row if it exists
+      }
+      
+      // Make sure we have data rows after potential headers
+      if (startRow >= rows.length) {
+        toast.error('No data rows found after headers');
         return [];
       }
-
-      // Get optional names from second row if it exists
-      const secondRow = rows.length > 1 ? rows[1] : [];
+      
+      // Get numbers from the appropriate row
+      const numberRow = rows[startRow];
+      
+      // Get optional names from the name row if it exists
+      const namesArray = rows.length > nameRow ? rows[nameRow] : [];
+      
+      console.log('Using row for numbers:', startRow);
+      console.log('Number row data:', numberRow);
       
       // Create entries by pairing numbers with names
-      for (let i = 0; i < firstRow.length; i++) {
-        const numValue = Number(firstRow[i]);
+      for (let i = 0; i < numberRow.length; i++) {
+        const numValue = Number(numberRow[i]);
         if (!isNaN(numValue)) {
           parsedEntries.push({
             number: numValue,
-            name: i < secondRow.length ? secondRow[i] : ''
+            name: i < namesArray.length ? namesArray[i] : ''
           });
         } else {
-          console.log(`Invalid number at index ${i}: "${firstRow[i]}"`);
+          console.log(`Invalid number at index ${i}: "${numberRow[i]}"`);
         }
       }
 
@@ -117,7 +138,7 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
         </div>
         <h3 className="text-lg font-semibold">Import from CSV</h3>
         <p className="text-gray-600 text-sm">
-          First row: numbers, second row (optional): names or labels
+          Upload your CSV file with numbers and optional names
         </p>
         
         <div className="flex flex-col space-y-2">
@@ -134,7 +155,8 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
             className="cursor-pointer"
           />
           <p className="text-xs text-gray-500">
-            Example: 1,2,3,4,5<br />Alice,Bob,Charlie,Dave,Eve
+            Supports: numbers (required), names (optional)<br />
+            Also supports CSV files with headers in the first row
           </p>
         </div>
       </div>
