@@ -24,6 +24,7 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
       }
 
       const parsedEntries: Entry[] = [];
+      const processedNumbers = new Set<number>(); // Track numbers we've already processed
       
       // Parse CSV into rows and columns and clean up quotes
       const rows = lines.map(line => 
@@ -63,10 +64,16 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
       for (let i = 0; i < numberRow.length; i++) {
         const numValue = Number(numberRow[i]);
         if (!isNaN(numValue)) {
-          parsedEntries.push({
-            number: numValue,
-            name: i < namesArray.length ? namesArray[i] : ''
-          });
+          // Only add this number if we haven't seen it before
+          if (!processedNumbers.has(numValue)) {
+            processedNumbers.add(numValue);
+            parsedEntries.push({
+              number: numValue,
+              name: i < namesArray.length ? namesArray[i] : ''
+            });
+          } else {
+            console.log(`Duplicate number found at index ${i}: ${numValue} - ignoring this entry`);
+          }
         } else {
           console.log(`Invalid number at index ${i}: "${numberRow[i]}"`);
         }
@@ -77,13 +84,7 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
         return [];
       }
 
-      // Check for duplicate numbers
-      const uniqueNumbers = new Set(parsedEntries.map(entry => entry.number));
-      if (uniqueNumbers.size !== parsedEntries.length) {
-        toast.warning('Duplicate numbers detected - please ensure all numbers are unique');
-        return [];
-      }
-
+      // No need to check for duplicates here as we're now handling them above
       console.log('Successfully parsed entries:', parsedEntries);
       return parsedEntries;
     } catch (error) {
