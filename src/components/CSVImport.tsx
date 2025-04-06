@@ -18,28 +18,36 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
   const processCSVData = (data: string): Entry[] => {
     try {
       const lines = data.trim().split('\n');
-      if (lines.length < 2) {
-        toast.error('CSV must contain at least two rows');
+      if (lines.length === 0) {
+        toast.error('CSV file appears to be empty');
         return [];
       }
 
       const parsedEntries: Entry[] = [];
       
       // Parse CSV into rows and columns
-      const rows = lines.map(line => line.split(','));
+      const rows = lines.map(line => line.split(',').map(item => item.trim()));
       
-      // Get numbers from first row and names from second row (if exists)
-      const numbers = rows[0];
-      const names = rows.length > 1 ? rows[1] : Array(numbers.length).fill('');
+      // Extract numbers from first row
+      const firstRow = rows[0];
+      if (!firstRow || firstRow.length === 0) {
+        toast.error('No data found in the first row');
+        return [];
+      }
+
+      // Get optional names from second row if it exists
+      const secondRow = rows.length > 1 ? rows[1] : [];
       
-      // Create entries
-      for (let i = 0; i < numbers.length; i++) {
-        const numValue = Number(numbers[i].trim());
+      // Create entries by pairing numbers with names
+      for (let i = 0; i < firstRow.length; i++) {
+        const numValue = Number(firstRow[i]);
         if (!isNaN(numValue)) {
           parsedEntries.push({
             number: numValue,
-            name: names[i]?.trim() || ''
+            name: i < secondRow.length ? secondRow[i] : ''
           });
+        } else {
+          console.log(`Invalid number at index ${i}: "${firstRow[i]}"`);
         }
       }
 
@@ -55,6 +63,7 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
         return [];
       }
 
+      console.log('Successfully parsed entries:', parsedEntries);
       return parsedEntries;
     } catch (error) {
       console.error('CSV parsing error:', error);
@@ -73,6 +82,7 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
     reader.onload = (event) => {
       try {
         const content = event.target?.result as string;
+        console.log('CSV content:', content);
         const parsedEntries = processCSVData(content);
         
         if (parsedEntries.length > 0) {
