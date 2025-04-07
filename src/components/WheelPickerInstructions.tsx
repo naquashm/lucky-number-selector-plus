@@ -10,7 +10,7 @@ const WheelPickerInstructions: React.FC = () => {
         <div className="space-y-2">
           <p>The manual entry form allows you to create a custom list of entries:</p>
           <ol className="list-decimal pl-5 space-y-1">
-            <li>Use the slider to set the number of entries (2-100) or enter a custom number for more entries.</li>
+            <li>Use the slider to set the number of entries (2-500) or enter a custom number for more entries.</li>
             <li>For each entry, enter a unique number in the "Number" field (required).</li>
             <li>Optionally add a name/label for each entry in the "Name/Label" field.</li>
             <li>All numbers must be unique - duplicates will be highlighted in red.</li>

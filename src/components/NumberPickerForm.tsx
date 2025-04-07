@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -86,23 +87,24 @@ const NumberPickerForm: React.FC<NumberPickerFormProps> = ({ onStartPicking }) =
                   id="entryCount"
                   value={[entryCount]}
                   min={2}
-                  max={100}
+                  max={500}
                   step={1}
                   onValueChange={handleSliderChange}
                   className={`flex-1 ${customCount ? 'opacity-50' : ''}`}
                   disabled={customCount}
                 />
-                <span className="text-xs">100</span>
+                <span className="text-xs">500</span>
               </div>
             </div>
             
             <div className="flex items-center gap-2">
               <Input 
                 type="number" 
-                placeholder="Custom count (>100)" 
+                placeholder="Custom count (>500)" 
                 value={customEntryCount}
                 onChange={handleCustomCountChange}
                 min={2}
+                max={500}
                 className="max-w-[200px]"
               />
               <Button 
