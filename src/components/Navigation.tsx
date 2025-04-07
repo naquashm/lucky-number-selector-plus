@@ -13,11 +13,11 @@ const Navigation = () => {
       <div className="w-full flex items-center justify-start">
         <Button 
           variant="ghost" 
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
           className="flex items-center gap-1 text-gray-600 hover:text-gray-900"
         >
           <ArrowLeft size={18} />
-          Back to Home
+          Back
         </Button>
       </div>
       
