@@ -8,10 +8,13 @@ import RandomPicker from '@/components/RandomPicker';
 import Navigation from '@/components/Navigation';
 import CSVImport from '@/components/CSVImport';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import NumberGeneratorInstructions from '@/components/NumberGeneratorInstructions';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
   const [showPicker, setShowPicker] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
 
   const handleStartPicking = (validEntries: Entry[]) => {
     setEntries(validEntries);
@@ -37,7 +40,20 @@ const Index = () => {
             <p className="text-gray-600 mt-2">
               Enter your numbers with optional names/labels and let the app pick a random one!
             </p>
+            <Button 
+              variant="link" 
+              onClick={() => setShowInstructions(!showInstructions)}
+              className="mt-2"
+            >
+              {showInstructions ? "Hide Instructions" : "Show Instructions"}
+            </Button>
           </header>
+
+          {showInstructions && (
+            <div className="mb-6">
+              <NumberGeneratorInstructions />
+            </div>
+          )}
 
           <Separator className="my-6" />
 

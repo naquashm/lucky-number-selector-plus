@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import ConfettiEffect from '@/components/ConfettiEffect';
 import CSVImport from '@/components/CSVImport';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import WheelPickerInstructions from '@/components/WheelPickerInstructions';
 
 const Wheel = () => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
@@ -17,6 +18,7 @@ const Wheel = () => {
   const [spinning, setSpinning] = useState(false);
   const [winner, setWinner] = useState<Entry | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
 
   const handleStartPicking = (validEntries: Entry[]) => {
     setEntries(validEntries);
@@ -62,7 +64,20 @@ const Wheel = () => {
             <p className="text-gray-600 mt-2">
               Enter your numbers with optional names/labels and spin the wheel!
             </p>
+            <Button 
+              variant="link" 
+              onClick={() => setShowInstructions(!showInstructions)}
+              className="mt-2"
+            >
+              {showInstructions ? "Hide Instructions" : "Show Instructions"}
+            </Button>
           </header>
+
+          {showInstructions && (
+            <div className="mb-6">
+              <WheelPickerInstructions />
+            </div>
+          )}
 
           <Separator className="my-6" />
 
