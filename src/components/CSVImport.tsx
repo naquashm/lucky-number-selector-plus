@@ -31,60 +31,75 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
         line.split(',').map(item => item.trim().replace(/^"(.*)"$/, '$1'))
       );
       
-      // Determine if first row is headers by checking if all items are not numbers
-      const firstRow = rows[0];
-      let startRow = 0;
-      let nameRow = 1;
-      
-      // Check if first row contains headers (no valid numbers)
-      const allFirstRowNonNumeric = firstRow.every(item => isNaN(Number(item)));
-      
-      if (allFirstRowNonNumeric) {
-        console.log('First row appears to be headers, skipping for numbers');
-        startRow = 1; // Skip header row
-        nameRow = 2;  // Names are in the third row if it exists
+      if (rows.length === 0 || rows[0].length === 0) {
+        toast.error('No data found in CSV');
+        return [];
       }
+
+      console.log('Raw CSV rows:', rows);
       
-      // Make sure we have data rows after potential headers
-      if (startRow >= rows.length) {
-        toast.error('No data rows found after headers');
+      // Identify which columns contain numbers and which contain names
+      // We'll analyze all columns to determine the best match
+      const columnTypes = identifyColumnTypes(rows);
+      console.log('Column types analysis:', columnTypes);
+      
+      // Find the first column that is primarily numeric to use as the number column
+      const numberColumnIndex = columnTypes.findIndex(col => col.type === 'number');
+      if (numberColumnIndex === -1) {
+        toast.error('Could not find a column with numbers in the CSV');
         return [];
       }
       
-      // Get numbers from the appropriate row
-      const numberRow = rows[startRow];
+      // Find a column that contains mostly strings but not numbers to use as names
+      const nameColumnIndex = columnTypes.findIndex(col => 
+        col.type === 'string' && col.index !== numberColumnIndex
+      );
       
-      // Get optional names from the name row if it exists
-      const namesArray = rows.length > nameRow ? rows[nameRow] : [];
+      console.log(`Using column ${numberColumnIndex} for numbers and column ${nameColumnIndex} for names`);
       
-      console.log('Using row for numbers:', startRow);
-      console.log('Number row data:', numberRow);
+      // Skip header row if detected
+      let dataStartRow = 0;
+      const firstRow = rows[0];
+      const hasHeaderRow = firstRow.some(cell => isNaN(Number(cell)) && cell.length > 0);
+      if (hasHeaderRow) {
+        console.log('Header row detected, starting data from row 1');
+        dataStartRow = 1;
+      }
       
-      // Create entries by pairing numbers with names
-      for (let i = 0; i < numberRow.length; i++) {
-        const numValue = Number(numberRow[i]);
+      // Extract data using identified columns
+      for (let i = dataStartRow; i < rows.length; i++) {
+        const row = rows[i];
+        
+        if (row.length <= numberColumnIndex) continue; // Skip rows that don't have enough columns
+        
+        const numValue = Number(row[numberColumnIndex]);
         if (!isNaN(numValue)) {
           // Only add this number if we haven't seen it before
           if (!processedNumbers.has(numValue)) {
             processedNumbers.add(numValue);
+            
+            let name = '';
+            if (nameColumnIndex !== -1 && row.length > nameColumnIndex) {
+              name = row[nameColumnIndex];
+            }
+            
             parsedEntries.push({
               number: numValue,
-              name: i < namesArray.length ? namesArray[i] : ''
+              name
             });
           } else {
-            console.log(`Duplicate number found at index ${i}: ${numValue} - ignoring this entry`);
+            console.log(`Duplicate number found in row ${i}: ${numValue} - ignoring this entry`);
           }
         } else {
-          console.log(`Invalid number at index ${i}: "${numberRow[i]}"`);
+          console.log(`Invalid number in row ${i}, column ${numberColumnIndex}: "${row[numberColumnIndex]}"`);
         }
       }
 
       if (parsedEntries.length === 0) {
-        toast.error('No valid numbers found in CSV');
+        toast.error('No valid entries could be created from the CSV');
         return [];
       }
 
-      // No need to check for duplicates here as we're now handling them above
       console.log('Successfully parsed entries:', parsedEntries);
       return parsedEntries;
     } catch (error) {
@@ -92,6 +107,65 @@ const CSVImport: React.FC<CSVImportProps> = ({ onEntriesLoaded }) => {
       toast.error('Failed to parse CSV file');
       return [];
     }
+  };
+
+  // Helper function to identify column types
+  const identifyColumnTypes = (rows: string[][]) => {
+    // Skip empty rows and ensure we have data to analyze
+    const dataRows = rows.filter(row => row.length > 0);
+    if (dataRows.length === 0) return [];
+    
+    // Determine how many columns to analyze
+    const maxColumns = Math.max(...dataRows.map(row => row.length));
+    
+    // Initialize column analysis arrays
+    const columnAnalysis = Array(maxColumns).fill(0).map((_, index) => ({
+      index,
+      numericCount: 0,
+      stringCount: 0,
+      emptyCount: 0,
+      totalCount: 0,
+      type: 'unknown' as 'number' | 'string' | 'unknown'
+    }));
+    
+    // Analyze each column
+    dataRows.forEach(row => {
+      for (let i = 0; i < maxColumns; i++) {
+        if (i < row.length) {
+          const value = row[i].trim();
+          columnAnalysis[i].totalCount++;
+          
+          if (value === '') {
+            columnAnalysis[i].emptyCount++;
+          } else if (!isNaN(Number(value)) && value !== '') {
+            columnAnalysis[i].numericCount++;
+          } else {
+            columnAnalysis[i].stringCount++;
+          }
+        }
+      }
+    });
+    
+    // Determine the type of each column
+    columnAnalysis.forEach(column => {
+      const nonEmptyCount = column.totalCount - column.emptyCount;
+      if (nonEmptyCount === 0) {
+        column.type = 'unknown';
+      } else {
+        const numericPercentage = column.numericCount / nonEmptyCount;
+        const stringPercentage = column.stringCount / nonEmptyCount;
+        
+        if (numericPercentage > 0.75) {
+          column.type = 'number';
+        } else if (stringPercentage > 0.5) {
+          column.type = 'string';
+        } else {
+          column.type = 'unknown';
+        }
+      }
+    });
+    
+    return columnAnalysis;
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
