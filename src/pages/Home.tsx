@@ -15,7 +15,7 @@ import {
   Users,
   Star,
   Rocket,
-  Bulb
+  Lightbulb
 } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -262,7 +262,7 @@ const Home = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-picker-orange mb-4 flex items-center gap-2">
-                  <Bulb className="h-6 w-6" />
+                  <Lightbulb className="h-6 w-6" />
                   Tips for Success
                 </h3>
                 <p className="leading-relaxed">
