@@ -3,7 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Shuffle, CircleDashed, FileSpreadsheet, HelpCircle, Check, ArrowRight } from 'lucide-react';
+import { 
+  Shuffle, 
+  CircleDashed, 
+  FileSpreadsheet, 
+  HelpCircle, 
+  Check, 
+  ArrowRight,
+  Grid2x2,
+  ChartBar,
+  Users,
+  Star,
+  Rocket,
+  Bulb
+} from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const Home = () => {
@@ -155,71 +168,109 @@ const Home = () => {
           </div>
         </div>
 
+        <div className="h-32 w-full bg-gray-100/50 flex items-center justify-center text-gray-400">
+          Advertisement Space
+        </div>
+
         <div className="bg-gradient-to-r from-picker-purple/10 to-picker-orange/10 rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">Advanced Features</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-8">How Our Tools Can Help You</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-4">Number Generator</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <Users className="text-picker-purple h-6 w-6" />
+                <h3 className="text-xl font-semibold">Education</h3>
+              </div>
               <ul className="space-y-3 text-gray-700">
-                <li>• Support for up to 500 entries</li>
-                <li>• Custom labeling options</li>
-                <li>• Duplicate number prevention</li>
-                <li>• CSV import capability</li>
-                <li>• Instant random selection</li>
+                <li>• Student participation selection</li>
+                <li>• Group assignment distribution</li>
+                <li>• Project presentation order</li>
+                <li>• Quiz participant selection</li>
+                <li>• Fair task distribution</li>
               </ul>
             </Card>
             <Card className="p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-4">Wheel Picker</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <Star className="text-picker-orange h-6 w-6" />
+                <h3 className="text-xl font-semibold">Events</h3>
+              </div>
               <ul className="space-y-3 text-gray-700">
-                <li>• Interactive spinning wheel</li>
-                <li>• Customizable entries</li>
-                <li>• Animation effects</li>
-                <li>• Winner highlighting</li>
-                <li>• Multiple spin options</li>
+                <li>• Raffle drawings</li>
+                <li>• Door prize selection</li>
+                <li>• Contest winner picking</li>
+                <li>• Game night activities</li>
+                <li>• Team matchups</li>
               </ul>
             </Card>
             <Card className="p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-4">Shared Features</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <Rocket className="text-picker-purple h-6 w-6" />
+                <h3 className="text-xl font-semibold">Business</h3>
+              </div>
               <ul className="space-y-3 text-gray-700">
-                <li>• Bulk data import</li>
-                <li>• Mobile responsive</li>
-                <li>• Easy reset options</li>
-                <li>• Result history</li>
-                <li>• User-friendly interface</li>
+                <li>• Employee rewards</li>
+                <li>• Meeting presenter selection</li>
+                <li>• Task assignments</li>
+                <li>• Team building activities</li>
+                <li>• Customer giveaways</li>
               </ul>
             </Card>
           </div>
         </div>
 
+        <div className="h-32 w-full bg-gray-100/50 flex items-center justify-center text-gray-400">
+          Advertisement Space
+        </div>
+
         <div className="bg-white/80 backdrop-blur-sm rounded-lg p-8 shadow-lg">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Perfect For Every Scenario</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Getting Started Guide</h2>
           <div className="grid md:grid-cols-2 gap-8 text-gray-700">
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-picker-purple">Education</h3>
-              <p>
-                Teachers can quickly select students for class participation, assign group projects, or
-                choose presentation orders. The wheel picker adds an element of excitement to the classroom
-                while maintaining fairness in selection.
-              </p>
-              <h3 className="text-2xl font-semibold text-picker-purple">Business</h3>
-              <p>
-                Perfect for selecting raffle winners at corporate events, assigning tasks in team meetings,
-                or conducting fair employee reward programs. The CSV import feature makes it easy to handle
-                large employee databases.
-              </p>
+              <div>
+                <h3 className="text-2xl font-semibold text-picker-purple mb-4 flex items-center gap-2">
+                  <Grid2x2 className="h-6 w-6" />
+                  Number Generator
+                </h3>
+                <p className="leading-relaxed">
+                  Perfect for quick random selections. Enter up to 500 numbers with optional labels,
+                  or import your data via CSV. Ideal for selecting winners, assigning tasks, or
+                  creating random groups. The tool ensures fair and unbiased selection every time.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-picker-purple mb-4 flex items-center gap-2">
+                  <ChartBar className="h-6 w-6" />
+                  Data Import Options
+                </h3>
+                <p className="leading-relaxed">
+                  Both tools support CSV file imports for handling large datasets. Simply prepare your
+                  CSV with numbers and optional labels, then upload it to instantly load hundreds of
+                  entries. Perfect for managing large pools of participants.
+                </p>
+              </div>
             </div>
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-picker-orange">Events</h3>
-              <p>
-                Event planners can efficiently manage door prizes, contest winners, and audience participation.
-                The visual wheel adds entertainment value while ensuring transparent random selection.
-              </p>
-              <h3 className="text-2xl font-semibold text-picker-orange">Research</h3>
-              <p>
-                Researchers can utilize our tools for random sampling, participant selection, or experimental
-                group assignment. The ability to import large datasets via CSV makes it ideal for academic
-                and professional research.
-              </p>
+              <div>
+                <h3 className="text-2xl font-semibold text-picker-orange mb-4 flex items-center gap-2">
+                  <CircleDashed className="h-6 w-6" />
+                  Wheel Picker
+                </h3>
+                <p className="leading-relaxed">
+                  Add excitement to your selection process with our interactive wheel. Support for up
+                  to 500 entries, custom labels, and engaging spin animations. Great for live events,
+                  classroom activities, or any situation requiring an engaging random selection.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-picker-orange mb-4 flex items-center gap-2">
+                  <Bulb className="h-6 w-6" />
+                  Tips for Success
+                </h3>
+                <p className="leading-relaxed">
+                  For best results, prepare your data beforehand. Consider using labels to make
+                  entries more identifiable. For large datasets, organize your CSV file with clear
+                  headers. The tools are designed to handle both simple and complex selection needs.
+                </p>
+              </div>
             </div>
           </div>
         </div>
