@@ -13,7 +13,7 @@ const Navbar = () => {
           <div className="bg-gradient-to-r from-picker-purple to-picker-orange p-2 rounded-md">
             <Shuffle size={20} className="text-white" />
           </div>
-          <span className="font-bold text-lg text-gray-800">Random Tools</span>
+          <span className="font-bold text-lg text-gray-800">NumberPicker.Live</span>
         </Link>
 
         <NavigationMenu>
