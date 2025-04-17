@@ -169,7 +169,6 @@ const Home = () => {
         </div>
 
         <div className="h-32 w-full bg-gray-100/50 flex items-center justify-center text-gray-400">
-          Advertisement Space
         </div>
 
         <div className="bg-gradient-to-r from-picker-purple/10 to-picker-orange/10 rounded-lg p-8">
@@ -218,7 +217,6 @@ const Home = () => {
         </div>
 
         <div className="h-32 w-full bg-gray-100/50 flex items-center justify-center text-gray-400">
-          Advertisement Space
         </div>
 
         <div className="bg-white/80 backdrop-blur-sm rounded-lg p-8 shadow-lg">
