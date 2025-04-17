@@ -10,6 +10,9 @@ import CSVImport from '@/components/CSVImport';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import NumberGeneratorInstructions from '@/components/NumberGeneratorInstructions';
 import { Button } from '@/components/ui/button';
+import AdPlaceholder from '@/components/home/AdPlaceholder';
+import ToolsInfoSection from '@/components/home/ToolsInfoSection';
+import Footer from '@/components/home/Footer';
 
 const Index = () => {
   const [entries, setEntries] = useState<Entry[] | null>(null);
@@ -76,9 +79,12 @@ const Index = () => {
         </div>
       </Card>
 
-      <footer className="text-center mt-8 text-sm text-gray-500">
-        <p>© 2025 Random Selection Tools | Large data sets supported with CSV import</p>
-      </footer>
+      <section className="mt-16 space-y-12 text-lg">
+        <ToolsInfoSection />
+        <AdPlaceholder />
+      </section>
+
+      <Footer />
     </div>
   );
 };
