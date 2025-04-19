@@ -41,7 +41,7 @@ const Index = () => {
               Random Number Generator
             </h1>
             <p className="text-gray-600 mt-2">
-              Enter your numbers with optional names/labels and let the app pick a random one!
+              Free online random name picker and number generator. Import from CSV or enter manually - perfect for quick selections!
             </p>
             <Button 
               variant="link" 

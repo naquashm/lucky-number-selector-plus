@@ -62,10 +62,10 @@ const Wheel = () => {
           <Navigation />
           <header className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-picker-purple to-picker-orange bg-clip-text text-transparent">
-              Wheel Picker
+              Picker Wheel App
             </h1>
             <p className="text-gray-600 mt-2">
-              Enter your numbers with optional names/labels and spin the wheel!
+              Random name picker from CSV or manual entry. Spin the wheel to make your selection!
             </p>
             <Button 
               variant="link" 
