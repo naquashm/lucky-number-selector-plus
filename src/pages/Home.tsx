@@ -47,13 +47,16 @@ const Home = () => {
         </div>
       </Card>
 
-      <section className="mt-16 space-y-12 text-lg">
+      <section className="mt-16 space-y-16 text-lg">
+        <AdPlaceholder />
         <ToolsInfoSection />
         <AdPlaceholder />
         <UseCasesGrid />
         <AdPlaceholder />
         <GettingStartedGuide />
+        <AdPlaceholder />
         <CallToAction />
+        <AdPlaceholder />
       </section>
 
       <Footer />
