@@ -9,7 +9,6 @@ import HomeHeader from '@/components/home/HomeHeader';
 import ToolCard from '@/components/home/ToolCard';
 import QuickHelpGuide from '@/components/home/QuickHelpGuide';
 import ToolsInfoSection from '@/components/home/ToolsInfoSection';
-import AdPlaceholder from '@/components/home/AdPlaceholder';
 import UseCasesGrid from '@/components/home/UseCasesGrid';
 import GettingStartedGuide from '@/components/home/GettingStartedGuide';
 import CallToAction from '@/components/home/CallToAction';
@@ -48,15 +47,10 @@ const Home = () => {
       </Card>
 
       <section className="mt-16 space-y-16 text-lg">
-        <AdPlaceholder />
         <ToolsInfoSection />
-        <AdPlaceholder />
         <UseCasesGrid />
-        <AdPlaceholder />
         <GettingStartedGuide />
-        <AdPlaceholder />
         <CallToAction />
-        <AdPlaceholder />
       </section>
 
       <Footer />

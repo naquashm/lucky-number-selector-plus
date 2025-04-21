@@ -10,7 +10,6 @@ import CSVImport from '@/components/CSVImport';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import NumberGeneratorInstructions from '@/components/NumberGeneratorInstructions';
 import { Button } from '@/components/ui/button';
-import AdPlaceholder from '@/components/home/AdPlaceholder';
 import ToolsInfoSection from '@/components/home/ToolsInfoSection';
 import Footer from '@/components/home/Footer';
 
@@ -81,7 +80,6 @@ const Index = () => {
 
       <section className="mt-16 space-y-12 text-lg">
         <ToolsInfoSection />
-        <AdPlaceholder />
       </section>
 
       <Footer />
