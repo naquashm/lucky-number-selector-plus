@@ -16,7 +16,7 @@ const QuickHelpGuide = () => {
           <AccordionContent>
             <ol className="list-decimal pl-5 space-y-1 text-gray-700">
               <li>Choose either Number Generator or Wheel Picker tool.</li>
-              <li>Set the number of entries using the slider (2-100) or enter a custom number.</li>
+              <li>Set the number of entries using the slider (2-500) or enter a custom number.</li>
               <li>Fill in unique numbers for each entry (required).</li>
               <li>Optionally add names or labels to your entries.</li>
               <li>Click "Start" to begin the random selection process.</li>
