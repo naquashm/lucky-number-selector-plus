@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,7 @@ import { ArrowLeft } from 'lucide-react';
 import { blogPosts } from '@/data/blogPosts';
 import Footer from '@/components/home/Footer';
 import BlogSidebar from './BlogSidebar';
+import AdPlaceholder from '@/components/home/AdPlaceholder';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -35,6 +37,20 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen py-8 md:py-12 container">
+      <Helmet>
+        <title>{post.title} | NumberPicker.live Blog</title>
+        <meta name="description" content={post.excerpt} />
+        <meta name="keywords" content={post.tags.join(', ') + ', random number picker, random selection'} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={post.coverImage} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content={post.coverImage} />
+      </Helmet>
+
       <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">
         <div className="p-6 md:p-8">
           <Button 
@@ -72,6 +88,7 @@ const BlogPost = () => {
               </div>
             </header>
 
+            <AdPlaceholder />
             <Separator className="my-6" />
 
             <div className="prose prose-lg max-w-none">
@@ -79,6 +96,7 @@ const BlogPost = () => {
             </div>
 
             <Separator className="my-8" />
+            <AdPlaceholder />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div className="md:col-span-2">

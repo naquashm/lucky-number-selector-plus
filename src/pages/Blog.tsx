@@ -3,13 +3,21 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import BlogPostList from '@/components/blog/BlogPostList';
 import BlogSidebar from '@/components/blog/BlogSidebar';
 import Footer from '@/components/home/Footer';
+import AdPlaceholder from '@/components/home/AdPlaceholder';
 
 const Blog = () => {
   return (
     <div className="min-h-screen py-8 md:py-12 container">
+      <Helmet>
+        <title>Random Number Picker Blog - Tips & Guides for Random Selection</title>
+        <meta name="description" content="Explore our blog for tips, guides, and use cases for random number generation and selection tools. Learn how to use random pickers effectively." />
+        <meta name="keywords" content="random number generator, random picker, random selection blog, number picker tutorial" />
+      </Helmet>
+      
       <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">
         <div className="p-6 md:p-8">
           <header className="text-center mb-8">
@@ -21,6 +29,7 @@ const Blog = () => {
             </p>
           </header>
 
+          <AdPlaceholder />
           <Separator className="my-6" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
