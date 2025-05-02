@@ -30,7 +30,6 @@ import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
-// Fix: Move the TooltipProvider inside a component rather than directly in App
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>

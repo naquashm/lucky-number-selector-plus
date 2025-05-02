@@ -15,18 +15,18 @@ import Footer from '@/components/home/Footer';
 
 const Home = () => {
   return (
-    <div className="min-h-screen py-8 md:py-12 container">
+    <div className="min-h-screen py-6 md:py-10 container">
       <Card className="mx-auto max-w-5xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">
-        <div className="p-6 md:p-8">
+        <div className="p-5 md:p-6">
           <HomeHeader />
-          <Separator className="my-6" />
+          <Separator className="my-4" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
             <ToolCard
               icon={Shuffle}
               iconColor="picker-purple"
               title="Random Number Generator"
-              description="Enter your numbers with optional names/labels and let the app pick a random one."
+              description="Generate random numbers with optional labels."
               hasCSVImport={true}
               path="/generator"
             />
@@ -35,7 +35,7 @@ const Home = () => {
               icon={CircleDashed}
               iconColor="picker-orange"
               title="Wheel Picker"
-              description="Enter your numbers and spin the wheel to select a random winner."
+              description="Spin a wheel to select a random winner."
               hasCSVImport={true}
               path="/wheel"
             />
@@ -44,7 +44,7 @@ const Home = () => {
               icon={Users}
               iconColor="picker-purple"
               title="Team Generator"
-              description="Input names and divide them into random teams or groups."
+              description="Create random teams from a list of names."
               hasCSVImport={true}
               path="/teams"
             />
@@ -53,7 +53,7 @@ const Home = () => {
               icon={User}
               iconColor="picker-orange"
               title="Name Picker"
-              description="Input names and pick one randomly with engaging animations."
+              description="Pick random names with animations."
               hasCSVImport={true}
               path="/names"
             />
@@ -62,7 +62,7 @@ const Home = () => {
               icon={Check}
               iconColor="picker-purple"
               title="Yes/No Picker"
-              description="A simple binary picker for quick decision making."
+              description="Quick binary decision maker."
               path="/yesno"
             />
 
@@ -70,7 +70,7 @@ const Home = () => {
               icon={Dices}
               iconColor="picker-orange"
               title="Dice Roller"
-              description="Virtual dice roller for D6, D20, or custom-sided dice."
+              description="Roll virtual dice with custom sides."
               path="/dice"
             />
 
@@ -78,7 +78,7 @@ const Home = () => {
               icon={Coins}
               iconColor="picker-purple"
               title="Coin Flipper"
-              description="Flip a virtual coin with optional custom coin faces."
+              description="Flip a virtual coin with custom faces."
               path="/coin"
             />
 
@@ -86,7 +86,7 @@ const Home = () => {
               icon={Circle}
               iconColor="picker-orange"
               title="Label Spinner"
-              description="Create labeled segments for a visual fortune wheel."
+              description="Create labeled wheel segments."
               hasCSVImport={true}
               path="/labels"
             />
@@ -95,7 +95,7 @@ const Home = () => {
               icon={ListFilter}
               iconColor="picker-purple"
               title="List Shuffler"
-              description="Shuffle any list of items into a random order."
+              description="Randomize list items order."
               hasCSVImport={true}
               path="/shuffle"
             />
@@ -104,7 +104,7 @@ const Home = () => {
               icon={CircleDashed}
               iconColor="picker-orange"
               title="Question Generator"
-              description="Generate random questions for icebreakers and social events."
+              description="Generate random conversation starters."
               path="/questions"
             />
             
@@ -112,7 +112,7 @@ const Home = () => {
               icon={ListFilter}
               iconColor="picker-purple"
               title="Sequence Generator"
-              description="Generate custom number sequences with various patterns."
+              description="Create number patterns and sequences."
               path="/sequence"
             />
             
@@ -120,7 +120,7 @@ const Home = () => {
               icon={CircleDashed}
               iconColor="picker-orange"
               title="Timer Spinner"
-              description="Countdown timer with spin animation for selections."
+              description="Countdown timer with random selection."
               path="/timer"
             />
           </div>
@@ -129,7 +129,7 @@ const Home = () => {
         </div>
       </Card>
 
-      <section className="mt-16 space-y-16 text-lg">
+      <section className="mt-12 space-y-12 text-lg">
         <ToolsInfoSection />
         <UseCasesGrid />
         <GettingStartedGuide />

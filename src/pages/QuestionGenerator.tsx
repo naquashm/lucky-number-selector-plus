@@ -13,9 +13,41 @@ const QuestionGenerator = () => {
   return (
     <div className="min-h-screen py-8 md:py-12 container">
       <Helmet>
-        <title>Random Question Generator - Conversation Starters | NumberPicker.Live</title>
-        <meta name="description" content="Generate random conversation starters, icebreakers, and discussion questions for meetings, classrooms, and social events." />
-        <meta name="keywords" content="question generator, random questions, icebreaker questions, conversation starters, team building questions" />
+        <title>Random Question Generator - Free Conversation Starters & Icebreakers | NumberPicker.Live</title>
+        <meta name="description" content="Generate engaging random conversation starters, icebreakers, and discussion questions for meetings, classrooms, and social events with our free online tool." />
+        <meta name="keywords" content="question generator, random questions, icebreaker questions, conversation starters, team building questions, meeting icebreakers" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://numberpicker.live/questions" />
+        <meta property="og:title" content="Random Question Generator - Free Conversation Starters" />
+        <meta property="og:description" content="Generate engaging random conversation starters and icebreakers for meetings, classes, and events." />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://numberpicker.live/questions" />
+        <meta property="twitter:title" content="Random Question Generator - Free Conversation Starters" />
+        <meta property="twitter:description" content="Generate engaging random conversation starters and icebreakers for meetings, classes, and events." />
+        
+        {/* Canonical link */}
+        <link rel="canonical" href="https://numberpicker.live/questions" />
+        
+        {/* Structured data for SEO */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Random Question Generator",
+            "url": "https://numberpicker.live/questions",
+            "description": "Generate random conversation starters, icebreakers, and discussion questions for meetings, classrooms, and social events.",
+            "applicationCategory": "UtilityApplication",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        `}</script>
       </Helmet>
       
       <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">

@@ -13,9 +13,29 @@ const Blog = () => {
   return (
     <div className="min-h-screen py-8 md:py-12 container">
       <Helmet>
-        <title>Random Number Picker Blog - Tips & Guides for Random Selection</title>
-        <meta name="description" content="Explore our blog for tips, guides, and use cases for random number generation and selection tools. Learn how to use random pickers effectively." />
-        <meta name="keywords" content="random number generator, random picker, random selection blog, number picker tutorial" />
+        <title>Random Number Picker Blog - Expert Tips & Tools for Random Selection | NumberPicker.Live</title>
+        <meta name="description" content="Discover expert guides on using random number generators, wheel pickers, and team generators. Learn how to make fair decisions with our random selection tools." />
+        <meta name="keywords" content="random number generator, wheel picker, team generator, random selection tools, fair decision making" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://numberpicker.live/blog" />
+        <meta property="og:title" content="Random Number Picker Blog - Expert Tips & Tools" />
+        <meta property="og:description" content="Explore our guides on using random selection tools for fair decision making in classrooms, events, and business." />
+        <meta property="og:image" content="https://numberpicker.live/blog-cover.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://numberpicker.live/blog" />
+        <meta property="twitter:title" content="Random Number Picker Blog - Expert Tips & Tools" />
+        <meta property="twitter:description" content="Explore our guides on using random selection tools for fair decision making in classrooms, events, and business." />
+        <meta property="twitter:image" content="https://numberpicker.live/blog-cover.jpg" />
+        
+        {/* Canonical link */}
+        <link rel="canonical" href="https://numberpicker.live/blog" />
+        
+        {/* Additional SEO tags */}
+        <meta name="robots" content="index, follow" />
       </Helmet>
       
       <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">
@@ -25,7 +45,7 @@ const Blog = () => {
               Random Number Picker Blog
             </h1>
             <p className="text-gray-600 mt-2">
-              Tips, guides, and use cases for random selection tools in various scenarios
+              Expert guides and use cases for random selection tools in education, events, and business
             </p>
           </header>
 
