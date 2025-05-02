@@ -30,13 +30,14 @@ import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
+// Fix: Move the TooltipProvider inside a component rather than directly in App
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
+      <BrowserRouter>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -61,8 +62,8 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+        </TooltipProvider>
+      </BrowserRouter>
     </HelmetProvider>
   </QueryClientProvider>
 );
