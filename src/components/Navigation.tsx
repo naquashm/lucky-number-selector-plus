@@ -46,6 +46,9 @@ const Navigation = () => {
             <SelectItem value="coin">Coin Flipper</SelectItem>
             <SelectItem value="labels">Label Spinner</SelectItem>
             <SelectItem value="shuffle">List Shuffler</SelectItem>
+            <SelectItem value="questions">Question Generator</SelectItem>
+            <SelectItem value="sequence">Sequence Generator</SelectItem>
+            <SelectItem value="timer">Timer Spinner</SelectItem>
           </SelectContent>
         </Select>
       </div>

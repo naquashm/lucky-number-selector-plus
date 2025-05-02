@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Shuffle, CircleDashed, Users, User, Check, X, Dices, Coin, Circle, ListFilter } from 'lucide-react';
+import { Shuffle, CircleDashed, Users, User, Check, X, Dices, Coins, Circle, ListFilter } from 'lucide-react';
 
 import HomeHeader from '@/components/home/HomeHeader';
 import ToolCard from '@/components/home/ToolCard';
@@ -75,7 +75,7 @@ const Home = () => {
             />
 
             <ToolCard
-              icon={Coin}
+              icon={Coins}
               iconColor="picker-purple"
               title="Coin Flipper"
               description="Flip a virtual coin with optional custom coin faces."
@@ -98,6 +98,30 @@ const Home = () => {
               description="Shuffle any list of items into a random order."
               hasCSVImport={true}
               path="/shuffle"
+            />
+            
+            <ToolCard
+              icon={CircleDashed}
+              iconColor="picker-orange"
+              title="Question Generator"
+              description="Generate random questions for icebreakers and social events."
+              path="/questions"
+            />
+            
+            <ToolCard
+              icon={ListFilter}
+              iconColor="picker-purple"
+              title="Sequence Generator"
+              description="Generate custom number sequences with various patterns."
+              path="/sequence"
+            />
+            
+            <ToolCard
+              icon={CircleDashed}
+              iconColor="picker-orange"
+              title="Timer Spinner"
+              description="Countdown timer with spin animation for selections."
+              path="/timer"
             />
           </div>
 

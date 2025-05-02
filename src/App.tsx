@@ -16,6 +16,9 @@ import DiceRoller from "./pages/DiceRoller";
 import CoinFlipper from "./pages/CoinFlipper";
 import LabelSpinner from "./pages/LabelSpinner";
 import ListShuffler from "./pages/ListShuffler";
+import QuestionGenerator from "./pages/QuestionGenerator";
+import SequenceGenerator from "./pages/SequenceGenerator";
+import TimerSpinner from "./pages/TimerSpinner";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
@@ -46,6 +49,9 @@ const App = () => (
             <Route path="/coin" element={<CoinFlipper />} />
             <Route path="/labels" element={<LabelSpinner />} />
             <Route path="/shuffle" element={<ListShuffler />} />
+            <Route path="/questions" element={<QuestionGenerator />} />
+            <Route path="/sequence" element={<SequenceGenerator />} />
+            <Route path="/timer" element={<TimerSpinner />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

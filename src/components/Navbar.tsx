@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -12,7 +11,7 @@ import {
   Check,
   X,
   Dices,
-  Coin,
+  Coins,
   Circle,
   ListFilter
 } from 'lucide-react';
@@ -129,7 +128,7 @@ const Navbar = () => {
 
                     <Link to="/coin" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                       <div className="flex items-center gap-2">
-                        <Coin className="h-4 w-4" />
+                        <Coins className="h-4 w-4" />
                         <div className="text-sm font-medium leading-none">Coin Flipper</div>
                       </div>
                       <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
@@ -154,6 +153,36 @@ const Navbar = () => {
                       </div>
                       <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                         Randomize lists in any order
+                      </p>
+                    </Link>
+
+                    <Link to="/questions" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                      <div className="flex items-center gap-2">
+                        <CircleDashed className="h-4 w-4" />
+                        <div className="text-sm font-medium leading-none">Question Generator</div>
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Random questions for icebreakers
+                      </p>
+                    </Link>
+
+                    <Link to="/sequence" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                      <div className="flex items-center gap-2">
+                        <ListFilter className="h-4 w-4" />
+                        <div className="text-sm font-medium leading-none">Sequence Generator</div>
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Generate number sequences
+                      </p>
+                    </Link>
+
+                    <Link to="/timer" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                      <div className="flex items-center gap-2">
+                        <CircleDashed className="h-4 w-4" />
+                        <div className="text-sm font-medium leading-none">Timer Spinner</div>
+                      </div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Countdown timer with animation
                       </p>
                     </Link>
                   </div>
@@ -216,7 +245,7 @@ const Navbar = () => {
                   <span>Dice Roller</span>
                 </Link>
                 <Link to="/coin" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <Coin className="mr-2 h-5 w-5" />
+                  <Coins className="mr-2 h-5 w-5" />
                   <span>Coin Flipper</span>
                 </Link>
                 <Link to="/labels" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
@@ -226,6 +255,18 @@ const Navbar = () => {
                 <Link to="/shuffle" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
                   <ListFilter className="mr-2 h-5 w-5" />
                   <span>List Shuffler</span>
+                </Link>
+                <Link to="/questions" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
+                  <CircleDashed className="mr-2 h-5 w-5" />
+                  <span>Question Generator</span>
+                </Link>
+                <Link to="/sequence" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
+                  <ListFilter className="mr-2 h-5 w-5" />
+                  <span>Sequence Generator</span>
+                </Link>
+                <Link to="/timer" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
+                  <CircleDashed className="mr-2 h-5 w-5" />
+                  <span>Timer Spinner</span>
                 </Link>
               </div>
               

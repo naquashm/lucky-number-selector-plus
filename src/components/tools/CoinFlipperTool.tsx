@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
-import { Coin } from 'lucide-react';
+import { Coins } from 'lucide-react';
 import ConfettiEffect from '@/components/ConfettiEffect';
 import { useToast } from '@/hooks/use-toast';
 
@@ -155,7 +154,7 @@ const CoinFlipperTool: React.FC = () => {
                   getCoinFace()
                 ) : (
                   <div className="w-32 h-32 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-500 border-4 border-yellow-400 flex items-center justify-center">
-                    <Coin className="w-16 h-16 text-yellow-600" />
+                    <Coins className="w-16 h-16 text-yellow-600" />
                   </div>
                 )}
               </div>
@@ -171,7 +170,7 @@ const CoinFlipperTool: React.FC = () => {
                 disabled={isFlipping}
                 className="w-full bg-gradient-to-r from-picker-purple to-picker-orange hover:opacity-90 text-white"
               >
-                <Coin className="mr-2" />
+                <Coins className="mr-2" />
                 {isFlipping ? 'Flipping...' : 'Flip Coin'}
               </Button>
             </div>
@@ -234,7 +233,7 @@ const CoinFlipperTool: React.FC = () => {
                 disabled={isFlipping}
                 className="w-full bg-gradient-to-r from-picker-purple to-picker-orange hover:opacity-90 text-white"
               >
-                <Coin className="mr-2" />
+                <Coins className="mr-2" />
                 {isFlipping ? 'Flipping...' : 'Flip Custom Coin'}
               </Button>
             </div>
