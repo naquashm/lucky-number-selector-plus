@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { Helmet } from 'react-helmet-async';
 import { Shuffle, CircleDashed, Users, User, Check, X, Dices, Coins, Circle, ListFilter } from 'lucide-react';
 
 import HomeHeader from '@/components/home/HomeHeader';
@@ -16,10 +17,46 @@ import Footer from '@/components/home/Footer';
 const Home = () => {
   return (
     <div className="min-h-screen py-6 md:py-10 container">
+      <Helmet>
+        <title>Free Online Random Number Generator & Name Picker Tools | NumberPicker.Live</title>
+        <meta name="description" content="Generate random numbers, spin wheel pickers, create random teams, and more with our free online random selection tools. Perfect for classrooms, events, and business." />
+        <meta name="keywords" content="random number generator, wheel picker, name picker, team generator, random selection tools, classroom picker, fair decision maker" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://numberpicker.live/" />
+        <meta property="og:title" content="Free Online Random Number Generator & Name Picker Tools" />
+        <meta property="og:description" content="Generate random numbers, spin wheel pickers, create random teams, and more with our free online tools." />
+        <meta property="og:image" content="https://numberpicker.live/home-preview.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://numberpicker.live/" />
+        <meta property="twitter:title" content="Free Online Random Number Generator & Name Picker Tools" />
+        <meta property="twitter:description" content="Generate random numbers, spin wheel pickers, create random teams, and more with our free online tools." />
+        <meta property="twitter:image" content="https://numberpicker.live/home-preview.jpg" />
+        
+        {/* Canonical link */}
+        <link rel="canonical" href="https://numberpicker.live/" />
+      </Helmet>
+
       <Card className="mx-auto max-w-5xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">
         <div className="p-5 md:p-6">
           <HomeHeader />
           <Separator className="my-4" />
+
+          {/* Google AdSense Ad Unit */}
+          <div className="my-4 text-center">
+            <ins className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-6502311177168321"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
             <ToolCard
@@ -130,6 +167,19 @@ const Home = () => {
       </Card>
 
       <section className="mt-12 space-y-12 text-lg">
+        {/* Google AdSense Ad Unit */}
+        <div className="text-center">
+          <ins className="adsbygoogle"
+              style={{ display: 'block' }}
+              data-ad-client="ca-pub-6502311177168321"
+              data-ad-slot="0987654321"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        
         <ToolsInfoSection />
         <UseCasesGrid />
         <GettingStartedGuide />

@@ -25,29 +25,27 @@ const ToolCard: React.FC<ToolCardProps> = ({
   const navigate = useNavigate();
 
   return (
-    <Card className="p-4 hover:shadow-lg transition-all hover:-translate-y-1 h-full flex flex-col">
-      <div className="text-center space-y-3 flex flex-col flex-1">
-        <div className={`mx-auto w-12 h-12 bg-${iconColor}/10 flex items-center justify-center rounded-full`}>
-          <Icon size={24} className={`text-${iconColor}`} />
+    <Card className="p-3 hover:shadow-lg transition-all hover:-translate-y-1 h-full flex flex-col">
+      <div className="text-center flex flex-col h-full">
+        <div className={`mx-auto w-10 h-10 bg-${iconColor}/10 flex items-center justify-center rounded-full`}>
+          <Icon size={20} className={`text-${iconColor}`} />
         </div>
-        <h2 className="text-xl font-semibold text-gray-800 line-clamp-1">{title}</h2>
-        <p className="text-gray-600 text-sm flex-1">
+        <h2 className="text-lg font-semibold text-gray-800 mt-2 mb-1 line-clamp-1">{title}</h2>
+        <p className="text-gray-600 text-xs mb-2 line-clamp-2 flex-grow">
           {description}
         </p>
         {hasCSVImport && (
-          <div className="flex items-center justify-center text-xs text-gray-500 my-1">
-            <FileSpreadsheet size={14} className="mr-1" />
+          <div className="flex items-center justify-center text-xs text-gray-500 mb-2">
+            <FileSpreadsheet size={12} className="mr-1" />
             <span>CSV import available</span>
           </div>
         )}
-        <div className="mt-auto pt-2">
-          <Button 
-            onClick={() => navigate(path)} 
-            className="w-full bg-gradient-to-r from-picker-purple to-picker-orange hover:opacity-90 text-white h-10"
-          >
-            Select Tool
-          </Button>
-        </div>
+        <Button 
+          onClick={() => navigate(path)} 
+          className="w-full bg-gradient-to-r from-picker-purple to-picker-orange hover:opacity-90 text-white h-9 mt-auto"
+        >
+          Select Tool
+        </Button>
       </div>
     </Card>
   );

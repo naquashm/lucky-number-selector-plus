@@ -15,7 +15,7 @@ const Blog = () => {
       <Helmet>
         <title>Random Number Picker Blog - Expert Tips & Tools for Random Selection | NumberPicker.Live</title>
         <meta name="description" content="Discover expert guides on using random number generators, wheel pickers, and team generators. Learn how to make fair decisions with our random selection tools." />
-        <meta name="keywords" content="random number generator, wheel picker, team generator, random selection tools, fair decision making" />
+        <meta name="keywords" content="random number generator, wheel picker, team generator, random name picker, fair decision making, classroom random picker, random team generator, random selection tools" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
@@ -36,6 +36,27 @@ const Blog = () => {
         
         {/* Additional SEO tags */}
         <meta name="robots" content="index, follow" />
+        
+        {/* Structured data for blog */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              "name": "NumberPicker.Live Blog",
+              "description": "Expert guides and use cases for random selection tools in education, events, and business",
+              "url": "https://numberpicker.live/blog",
+              "publisher": {
+                "@type": "Organization",
+                "name": "NumberPicker.Live",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://numberpicker.live/logo.png"
+                }
+              }
+            }
+          `}
+        </script>
       </Helmet>
       
       <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm shadow-xl overflow-hidden border-none">
@@ -49,7 +70,19 @@ const Blog = () => {
             </p>
           </header>
 
-          <AdPlaceholder />
+          {/* Google AdSense Ad Unit */}
+          <div className="my-6 text-center">
+            <ins className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-6502311177168321"
+                data-ad-slot="5678901234"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+          
           <Separator className="my-6" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -58,6 +91,19 @@ const Blog = () => {
             </div>
             <div className="md:col-span-1">
               <BlogSidebar />
+              
+              {/* Google AdSense Ad Unit - Sidebar */}
+              <div className="mt-8 text-center">
+                <ins className="adsbygoogle"
+                    style={{ display: 'block' }}
+                    data-ad-client="ca-pub-6502311177168321"
+                    data-ad-slot="9876543210"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+              </div>
             </div>
           </div>
         </div>

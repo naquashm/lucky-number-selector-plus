@@ -27,12 +27,36 @@ import Cookies from "./pages/Cookies";
 import Feedback from "./pages/Feedback";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
+      <Helmet>
+        {/* Google AdSense Script */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6502311177168321" crossOrigin="anonymous"></script>
+        
+        {/* Structured Data for SEO */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "NumberPicker.Live",
+              "url": "https://numberpicker.live",
+              "description": "Free online random name picker and number generator tools for fair decision making in classrooms, events, and business.",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://numberpicker.live/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
       <BrowserRouter>
         <TooltipProvider>
           <Toaster />
