@@ -9,6 +9,13 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Index from "./pages/Index";
 import Wheel from "./pages/Wheel";
+import TeamGenerator from "./pages/TeamGenerator";
+import NamePicker from "./pages/NamePicker";
+import YesNoPicker from "./pages/YesNoPicker";
+import DiceRoller from "./pages/DiceRoller";
+import CoinFlipper from "./pages/CoinFlipper";
+import LabelSpinner from "./pages/LabelSpinner";
+import ListShuffler from "./pages/ListShuffler";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
@@ -32,6 +39,13 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/generator" element={<Index />} />
             <Route path="/wheel" element={<Wheel />} />
+            <Route path="/teams" element={<TeamGenerator />} />
+            <Route path="/names" element={<NamePicker />} />
+            <Route path="/yesno" element={<YesNoPicker />} />
+            <Route path="/dice" element={<DiceRoller />} />
+            <Route path="/coin" element={<CoinFlipper />} />
+            <Route path="/labels" element={<LabelSpinner />} />
+            <Route path="/shuffle" element={<ListShuffler />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
