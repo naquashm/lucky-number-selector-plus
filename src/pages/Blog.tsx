@@ -10,6 +10,18 @@ import Footer from '@/components/home/Footer';
 import AdPlaceholder from '@/components/home/AdPlaceholder';
 
 const Blog = () => {
+  // Execute AdSense code after component mounts
+  React.useEffect(() => {
+    // Try to initialize AdSense ads
+    try {
+      if (window.adsbygoogle) {
+        window.adsbygoogle.push({});
+      }
+    } catch (e) {
+      console.error('AdSense error:', e);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen py-8 md:py-12 container">
       <Helmet>
@@ -35,7 +47,7 @@ const Blog = () => {
         <link rel="canonical" href="https://numberpicker.live/blog" />
         
         {/* Additional SEO tags */}
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         
         {/* Structured data for blog */}
         <script type="application/ld+json">
@@ -53,7 +65,21 @@ const Blog = () => {
                   "@type": "ImageObject",
                   "url": "https://numberpicker.live/logo.png"
                 }
-              }
+              },
+              "blogPost": [
+                {
+                  "@type": "BlogPosting",
+                  "headline": "Creative Ways to Use a Wheel Picker in the Classroom",
+                  "description": "Discover innovative teaching methods using wheel pickers for student engagement and fair selection.",
+                  "url": "https://numberpicker.live/blog/creative-ways-use-wheel-picker-classroom"
+                },
+                {
+                  "@type": "BlogPosting",
+                  "headline": "Running Fair Online Giveaways with Random Number Generators",
+                  "description": "Learn how to ensure fairness and transparency in online contests using random number generators.",
+                  "url": "https://numberpicker.live/blog/fair-online-giveaway-random-number-generator"
+                }
+              ]
             }
           `}
         </script>
@@ -78,9 +104,6 @@ const Blog = () => {
                 data-ad-slot="5678901234"
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
           </div>
           
           <Separator className="my-6" />
@@ -100,9 +123,6 @@ const Blog = () => {
                     data-ad-slot="9876543210"
                     data-ad-format="auto"
                     data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
               </div>
             </div>
           </div>

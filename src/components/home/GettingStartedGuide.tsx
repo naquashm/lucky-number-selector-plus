@@ -104,11 +104,11 @@ const GettingStartedGuide = () => {
             <Check className="h-5 w-5 text-picker-purple" />
             <h3 className="text-lg font-semibold text-picker-purple">Yes/No Picker</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Make binary decisions quickly with our <Link to="/yesno" className="text-picker-purple hover:underline">Yes/No Picker</Link>. Perfect for quick decisions, icebreakers, and group activities requiring simple choices.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/yesno" className="text-picker-purple hover:underline">Learn more →</Link>
             </p>
           </Card>
@@ -119,11 +119,11 @@ const GettingStartedGuide = () => {
             <Dices className="h-5 w-5 text-picker-orange" />
             <h3 className="text-lg font-semibold text-picker-orange">Dice Roller</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Roll virtual dice with our <Link to="/dice" className="text-picker-orange hover:underline">Dice Roller</Link>. Supports multiple dice, custom sides, and is perfect for games, random number generation, and educational activities.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/dice" className="text-picker-orange hover:underline">Learn more →</Link>
             </p>
           </Card>
@@ -134,11 +134,11 @@ const GettingStartedGuide = () => {
             <Coins className="h-5 w-5 text-picker-purple" />
             <h3 className="text-lg font-semibold text-picker-purple">Coin Flipper</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Make 50/50 decisions with our <Link to="/coin" className="text-picker-purple hover:underline">Coin Flipper</Link>. Features realistic animation and is perfect for quick binary choices, games, and simple random selection.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/coin" className="text-picker-purple hover:underline">Learn more →</Link>
             </p>
           </Card>
@@ -149,11 +149,11 @@ const GettingStartedGuide = () => {
             <Circle className="h-5 w-5 text-picker-orange" />
             <h3 className="text-lg font-semibold text-picker-orange">Label Spinner</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Create customized spinning wheels with our <Link to="/labels" className="text-picker-orange hover:underline">Label Spinner</Link>. Perfect for decision making, classroom activities, and adding engagement to selections.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/labels" className="text-picker-orange hover:underline">Learn more →</Link>
             </p>
           </Card>
@@ -164,11 +164,11 @@ const GettingStartedGuide = () => {
             <ListFilter className="h-5 w-5 text-picker-purple" />
             <h3 className="text-lg font-semibold text-picker-purple">List Shuffler</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Randomize any list with our <Link to="/shuffle" className="text-picker-purple hover:underline">List Shuffler</Link>. Ideal for creating random orders, presentation sequences, and fair distribution of items or tasks.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/shuffle" className="text-picker-purple hover:underline">Learn more →</Link>
             </p>
           </Card>
@@ -179,11 +179,11 @@ const GettingStartedGuide = () => {
             <CircleDashed className="h-5 w-5 text-picker-orange" />
             <h3 className="text-lg font-semibold text-picker-orange">Question Generator</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Generate random conversation starters with our <Link to="/questions" className="text-picker-orange hover:underline">Question Generator</Link>. Perfect for icebreakers, team building, classroom discussions, and social events.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/questions" className="text-picker-orange hover:underline">Learn more →</Link>
             </p>
           </Card>
@@ -194,11 +194,11 @@ const GettingStartedGuide = () => {
             <ListFilter className="h-5 w-5 text-picker-purple" />
             <h3 className="text-lg font-semibold text-picker-purple">Sequence Generator</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Create custom number sequences with our <Link to="/sequence" className="text-picker-purple hover:underline">Sequence Generator</Link>. Ideal for creating patterns, ranges, teaching math concepts, and generating ordered lists.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/sequence" className="text-picker-purple hover:underline">Learn more →</Link>
             </p>
           </Card>
@@ -209,11 +209,11 @@ const GettingStartedGuide = () => {
             <CircleDashed className="h-5 w-5 text-picker-orange" />
             <h3 className="text-lg font-semibold text-picker-orange">Timer Spinner</h3>
           </div>
-          <Card className="p-4 h-full">
-            <p className="text-sm mb-3">
+          <Card className="p-4 h-full flex flex-col">
+            <p className="text-sm mb-3 flex-grow">
               Combine countdown timers with random selection using our <Link to="/timer" className="text-picker-orange hover:underline">Timer Spinner</Link>. Perfect for timed activities, games, presentations, and adding suspense to selections.
             </p>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-600 mt-auto">
               <Link to="/timer" className="text-picker-orange hover:underline">Learn more →</Link>
             </p>
           </Card>
