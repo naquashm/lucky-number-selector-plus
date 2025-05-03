@@ -30,6 +30,13 @@ import BlogPost from "./pages/BlogPost";
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
+// Add type declaration for Google AdSense
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 // Create a new instance of QueryClient
 const queryClient = new QueryClient();
 

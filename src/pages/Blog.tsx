@@ -9,6 +9,13 @@ import BlogSidebar from '@/components/blog/BlogSidebar';
 import Footer from '@/components/home/Footer';
 import AdPlaceholder from '@/components/home/AdPlaceholder';
 
+// Add type declaration for Google AdSense
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 const Blog = () => {
   // Execute AdSense code after component mounts
   React.useEffect(() => {
