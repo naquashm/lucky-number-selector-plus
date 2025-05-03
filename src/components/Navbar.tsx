@@ -60,10 +60,10 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               
-              <NavigationMenuItem>
+              <NavigationMenuItem className="relative">
                 <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid grid-cols-2 md:grid-cols-2 gap-2 p-4 md:w-[500px] lg:w-[500px] max-h-[450px] overflow-y-auto bg-white left-0 origin-top-left">
+                <NavigationMenuContent className="origin-top-left absolute left-0">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-4 w-[600px] max-h-[450px] overflow-y-auto bg-white shadow-lg rounded-md border">
                     <Link to="/generator" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                       <div className="flex items-center gap-2">
                         <Shuffle className="h-4 w-4" />
