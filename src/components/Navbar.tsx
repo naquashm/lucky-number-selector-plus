@@ -62,7 +62,7 @@ const Navbar = () => {
               
               <NavigationMenuItem className="relative">
                 <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
-                <NavigationMenuContent className="origin-top-left absolute left-0">
+                <NavigationMenuContent className="absolute left-0 transform -translate-x-1/4">
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-4 w-[600px] max-h-[450px] overflow-y-auto bg-white shadow-lg rounded-md border">
                     <Link to="/generator" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                       <div className="flex items-center gap-2">

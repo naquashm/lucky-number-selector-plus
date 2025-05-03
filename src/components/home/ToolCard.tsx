@@ -27,8 +27,9 @@ const ToolCard: React.FC<ToolCardProps> = ({
   return (
     <Card className="p-3 hover:shadow-lg transition-all hover:-translate-y-1 h-full flex flex-col">
       <div className="flex flex-col h-full">
-        <div className={`mx-auto w-10 h-10 bg-${iconColor}/10 flex items-center justify-center rounded-full mb-2`}>
-          <Icon size={18} className={`text-${iconColor}`} />
+        <div className={`mx-auto w-10 h-10 flex items-center justify-center rounded-full mb-2 bg-opacity-10`} 
+             style={{ backgroundColor: `rgba(var(--${iconColor}-rgb), 0.1)` }}>
+          <Icon size={18} style={{ color: `var(--${iconColor})` }} />
         </div>
         <h2 className="text-sm font-semibold text-gray-800 mb-1 text-center">{title}</h2>
         <p className="text-gray-600 text-xs mb-3 text-center flex-grow">

@@ -53,9 +53,11 @@ const Home = () => {
                 data-ad-slot="1234567890"
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
-            <script>
+            <script dangerouslySetInnerHTML={{
+              __html: `
                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+              `
+            }}></script>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
@@ -175,9 +177,11 @@ const Home = () => {
               data-ad-slot="0987654321"
               data-ad-format="auto"
               data-full-width-responsive="true"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
+          <script dangerouslySetInnerHTML={{
+              __html: `
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              `
+            }}></script>
         </div>
         
         <ToolsInfoSection />
