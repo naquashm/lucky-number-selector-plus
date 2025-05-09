@@ -6,7 +6,6 @@ import {
   Shuffle, 
   CircleDashed, 
   Book, 
-  ChevronDown,
   Users,
   User,
   Check,
@@ -16,14 +15,35 @@ import {
   Circle,
   ListFilter
 } from 'lucide-react';
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger, NavigationMenuContent } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const tools = [
+    { icon: Shuffle, name: "Number Generator", description: "Generate random numbers within a range", path: "/generator" },
+    { icon: CircleDashed, name: "Wheel Picker", description: "Spin a wheel to select random winners", path: "/wheel" },
+    { icon: Users, name: "Team Generator", description: "Divide people into random teams", path: "/teams" },
+    { icon: User, name: "Name Picker", description: "Randomly select names with animation", path: "/names" },
+    { icon: Check, name: "Yes/No Picker", description: "Make binary decisions quickly", path: "/yesno" },
+    { icon: Dices, name: "Dice Roller", description: "Roll virtual dice for games", path: "/dice" },
+    { icon: Coins, name: "Coin Flipper", description: "Flip a virtual coin for decisions", path: "/coin" },
+    { icon: Circle, name: "Label Spinner", description: "Create customizable spinners", path: "/labels" },
+    { icon: ListFilter, name: "List Shuffler", description: "Randomize lists in any order", path: "/shuffle" },
+    { icon: CircleDashed, name: "Question Generator", description: "Random questions for icebreakers", path: "/questions" },
+    { icon: ListFilter, name: "Sequence Generator", description: "Generate number sequences", path: "/sequence" },
+    { icon: CircleDashed, name: "Timer Spinner", description: "Countdown timer with animation", path: "/timer" },
+  ];
+
   return (
-    <div className="w-full bg-white/90 backdrop-blur-sm shadow-sm py-3 sticky top-0 z-10 border-b">
+    <div className="w-full bg-white/90 backdrop-blur-sm shadow-sm py-3 sticky top-0 z-20 border-b">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
           <div className="bg-gradient-to-r from-picker-purple to-picker-orange p-2 rounded-md">
@@ -36,6 +56,7 @@ const Navbar = () => {
         <button 
           className="md:hidden p-2" 
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
@@ -43,173 +64,55 @@ const Navbar = () => {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:block">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link 
-                    to="/" 
-                    className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                    )}
-                  >
-                    <Home className="mr-2 h-4 w-4" />
-                    <span>Home</span>
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              
-              <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger>Tools</NavigationMenuTrigger>
-                <NavigationMenuContent className="absolute left-0 transform -translate-x-1/4">
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-4 w-[600px] max-h-[450px] overflow-y-auto bg-white shadow-lg rounded-md border">
-                    <Link to="/generator" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <Shuffle className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Number Generator</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Generate random numbers within a range
-                      </p>
-                    </Link>
-                    
-                    <Link to="/wheel" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <CircleDashed className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Wheel Picker</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Spin a wheel to select random winners
-                      </p>
-                    </Link>
-
-                    <Link to="/teams" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Team Generator</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Divide people into random teams
-                      </p>
-                    </Link>
-
-                    <Link to="/names" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <User className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Name Picker</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Randomly select names with animation
-                      </p>
-                    </Link>
-
-                    <Link to="/yesno" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <div className="flex space-x-1">
-                          <Check className="h-4 w-4" />
-                          <X className="h-4 w-4" />
+        <div className="hidden md:flex items-center gap-2">
+          <Link 
+            to="/" 
+            className="flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent"
+          >
+            <Home className="mr-2 h-4 w-4" />
+            <span>Home</span>
+          </Link>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent">
+                Tools
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 h-4 w-4">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-[280px] md:w-[600px] max-h-[450px] overflow-y-auto" align="center">
+              <DropdownMenuGroup>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2 p-2">
+                  {tools.map((tool) => (
+                    <DropdownMenuItem key={tool.path} asChild className="p-0 focus:bg-transparent">
+                      <Link to={tool.path} className="flex flex-col w-full p-3 rounded-md hover:bg-accent">
+                        <div className="flex items-center gap-2 mb-1">
+                          <tool.icon className="h-4 w-4" />
+                          <span className="font-medium">{tool.name}</span>
                         </div>
-                        <div className="text-sm font-medium leading-none">Yes/No Picker</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Make binary decisions quickly
-                      </p>
-                    </Link>
-
-                    <Link to="/dice" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <Dices className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Dice Roller</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Roll virtual dice for games
-                      </p>
-                    </Link>
-
-                    <Link to="/coin" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <Coins className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Coin Flipper</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Flip a virtual coin for decisions
-                      </p>
-                    </Link>
-
-                    <Link to="/labels" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <Circle className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Label Spinner</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Create customizable spinners
-                      </p>
-                    </Link>
-
-                    <Link to="/shuffle" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <ListFilter className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">List Shuffler</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Randomize lists in any order
-                      </p>
-                    </Link>
-
-                    <Link to="/questions" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <CircleDashed className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Question Generator</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Random questions for icebreakers
-                      </p>
-                    </Link>
-
-                    <Link to="/sequence" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <ListFilter className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Sequence Generator</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Generate number sequences
-                      </p>
-                    </Link>
-
-                    <Link to="/timer" className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="flex items-center gap-2">
-                        <CircleDashed className="h-4 w-4" />
-                        <div className="text-sm font-medium leading-none">Timer Spinner</div>
-                      </div>
-                      <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                        Countdown timer with animation
-                      </p>
-                    </Link>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link 
-                    to="/blog" 
-                    className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                    )}
-                  >
-                    <Book className="mr-2 h-4 w-4" />
-                    <span>Blog</span>
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+                        <p className="text-xs text-muted-foreground">{tool.description}</p>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </div>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          
+          <Link 
+            to="/blog" 
+            className="flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent"
+          >
+            <Book className="mr-2 h-4 w-4" />
+            <span>Blog</span>
+          </Link>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white shadow-md p-4 md:hidden z-20">
+          <div className="absolute top-full left-0 right-0 bg-white shadow-md p-4 md:hidden z-30">
             <div className="flex flex-col space-y-3">
               <Link to="/" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
                 <Home className="mr-2 h-5 w-5" />
@@ -218,57 +121,17 @@ const Navbar = () => {
               
               <div className="border-t pt-2">
                 <p className="text-sm font-medium text-gray-500 mb-2">Tools:</p>
-                <Link to="/generator" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <Shuffle className="mr-2 h-5 w-5" />
-                  <span>Number Generator</span>
-                </Link>
-                <Link to="/wheel" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <CircleDashed className="mr-2 h-5 w-5" />
-                  <span>Wheel Picker</span>
-                </Link>
-                <Link to="/teams" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <Users className="mr-2 h-5 w-5" />
-                  <span>Team Generator</span>
-                </Link>
-                <Link to="/names" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <User className="mr-2 h-5 w-5" />
-                  <span>Name Picker</span>
-                </Link>
-                <Link to="/yesno" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <div className="mr-2 flex space-x-1">
-                    <Check className="h-5 w-5" />
-                    <X className="h-5 w-5" />
-                  </div>
-                  <span>Yes/No Picker</span>
-                </Link>
-                <Link to="/dice" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <Dices className="mr-2 h-5 w-5" />
-                  <span>Dice Roller</span>
-                </Link>
-                <Link to="/coin" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <Coins className="mr-2 h-5 w-5" />
-                  <span>Coin Flipper</span>
-                </Link>
-                <Link to="/labels" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <Circle className="mr-2 h-5 w-5" />
-                  <span>Label Spinner</span>
-                </Link>
-                <Link to="/shuffle" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <ListFilter className="mr-2 h-5 w-5" />
-                  <span>List Shuffler</span>
-                </Link>
-                <Link to="/questions" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <CircleDashed className="mr-2 h-5 w-5" />
-                  <span>Question Generator</span>
-                </Link>
-                <Link to="/sequence" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <ListFilter className="mr-2 h-5 w-5" />
-                  <span>Sequence Generator</span>
-                </Link>
-                <Link to="/timer" className="flex items-center p-2 hover:bg-gray-100 rounded-md" onClick={() => setIsOpen(false)}>
-                  <CircleDashed className="mr-2 h-5 w-5" />
-                  <span>Timer Spinner</span>
-                </Link>
+                {tools.map((tool) => (
+                  <Link 
+                    key={tool.path}
+                    to={tool.path} 
+                    className="flex items-center p-2 hover:bg-gray-100 rounded-md" 
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <tool.icon className="mr-2 h-5 w-5" />
+                    <span>{tool.name}</span>
+                  </Link>
+                ))}
               </div>
               
               <div className="border-t pt-2">
