@@ -98,9 +98,9 @@ const GettingStartedGuide = () => {
       
       <Separator className="my-10" />
       
-      <h3 className="text-xl font-bold mb-6 text-gray-800">Additional Tools</h3>
+      <h3 className="text-xl font-bold mb-8 text-gray-800">Additional Tools</h3>
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Check className="h-5 w-5 text-picker-purple" />
